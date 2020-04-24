@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400&display=swap');
+
+// Partials
+@import './_partials/reset';
+@import './_partials/colors';
+@import './_partials/inputs';
+@import './_partials/buttons';
+
+// Grid
+@import './vendor/bootstrap-grid.min.css';
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F5F5F4;
+  color: $color-dark-gray;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif; // @font-family-sans-serif
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}

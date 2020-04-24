@@ -1,0 +1,24 @@
+.btn {
+  cursor: pointer;
+  font-size: 14px;
+  outline: 0;
+  padding: 15px 10px;
+  text-align: center;
+
+  &-primary {
+    background-color: $color-olive;
+    color: $color-ivory;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color-dark-gray;
+    }
+  }
+
+  &-secondary {
+    background-color: $color-white;
+    border: .5px solid $color-olive;
+    color: $color-olive;
+  }
+}
