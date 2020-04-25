@@ -3,6 +3,7 @@ import { AppContext } from "../../AppContext";
 import Item from './Item';
 import Button from '../Shared/Button';
 import Select from '../Shared/Select';
+import { fixedNumber } from '../../helpers/utilities';
 import './style.scss';
 
 export default class Cart extends Component {
@@ -26,7 +27,6 @@ export default class Cart extends Component {
     const { cart, setCartState } = this.context;
     const { showCart, subtotal } = cart;
     const products =  this.renderProducts();
-    const fixedSubtotal = Number(subtotal).toFixed(2);
 
 		return (
       <section className={`cart ${showCart ? 'cart--open' : ''}`} >
@@ -55,7 +55,7 @@ export default class Cart extends Component {
           <div className="cart__footer">
             <div className="cart__subtotal">
               <span>Subtotal</span>
-              <span>${fixedSubtotal}</span>
+              <span>${fixedNumber(subtotal)}</span>
             </div>
             <Button
               text="Make this a Subscription (Save 20%)"

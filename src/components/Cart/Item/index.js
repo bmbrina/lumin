@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Counter from '../../Shared/Counter';
+import { fixedNumber } from '../../../helpers/utilities';
 import './style.scss';
 
 export default class Item extends Component {
@@ -32,8 +33,6 @@ export default class Item extends Component {
       price,
     } = data;
 
-    const fixedPrice = Number(price).toFixed(2);
-
 		return (
      <div className="cart-item" key={id}>
        <button className="cart-item__close" onClick={this.removeItem}>x</button>
@@ -44,7 +43,7 @@ export default class Item extends Component {
             increaseEvent={this.increaseQty}
             decreaseEvent={this.decreaseQty}
           />
-          <p className="cart-item__price">${fixedPrice}</p>
+          <p className="cart-item__price">${fixedNumber(price)}</p>
         </div>
        </div>
         <div  className="cart-item__img">

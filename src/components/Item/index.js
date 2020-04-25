@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Shared/Button';
+import { fixedNumber } from '../../helpers/utilities';
 import './style.scss';
 
 export default class Item extends Component {
@@ -22,15 +23,13 @@ export default class Item extends Component {
       price,
     } = data;
 
-    const fixedPrice = Number(price).toFixed(2);
-
 		return (
      <div className="item" key={id}>
       <div  className="item__img-container">
         <img src={image_url} alt={title}/>
       </div>
       <h3 className="item__title">{title}</h3>
-      <p className="item__price">From ${fixedPrice}</p>
+      <p className="item__price">From ${fixedNumber(price)}</p>
       <Button
         text="Add to Cart"
         classList="btn-primary item__action"
