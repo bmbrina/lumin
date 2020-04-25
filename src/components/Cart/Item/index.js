@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import Button from '../Shared/Button';
 import './style.scss';
 
 export default class Item extends Component {
 	constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  addToCart() {
-    console.log('add to cart');
+  removeItem() {
+    console.log('remove item');
   }
 
 	render() {
@@ -25,17 +24,17 @@ export default class Item extends Component {
     const fixedPrice = Number(price).toFixed(2);
 
 		return (
-     <div className="item" key={id}>
-      <div  className="item__img-container">
-        <img src={image_url} alt={title}/>
-      </div>
-      <h3 className="item__title">{title}</h3>
-      <p className="item__price">From ${fixedPrice}</p>
-      <Button
-        text="Add to Cart"
-        classList="btn-primary item__action"
-        clickEvent={this.addToCart}
-      />
+     <div className="cart-item" key={id}>
+       <button className="cart-item__close" onClick={this.removeItem}>x</button>
+       <div className="cart-item__desc">
+        <h3 className="cart-item__title">{title}</h3>
+        <div>
+          <p className="cart-item__price">${fixedPrice}</p>
+        </div>
+       </div>
+        <div  className="cart-item__img">
+          <img src={image_url} alt={title}/>
+        </div>
      </div>
     );
 	}

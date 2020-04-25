@@ -5,6 +5,10 @@ import './style.scss';
 export default class Products extends Component {
 	constructor(props) {
     super(props);
+
+    this.state = {
+      products: []
+    }
   }
   
   renderProducts() {
@@ -19,6 +23,7 @@ export default class Products extends Component {
       );
     });
   }
+
 	render() {
     const products =  this.renderProducts();
 

@@ -1,9 +1,17 @@
+@import '../../../styles/_partials/colors';
+
 .btn {
   cursor: pointer;
   font-size: 14px;
   outline: 0;
   padding: 15px 10px;
   text-align: center;
+
+  &--alt {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
   &-primary {
     background-color: $color-olive;
@@ -18,7 +26,14 @@
 
   &-secondary {
     background-color: $color-white;
-    border: .5px solid $color-olive;
-    color: $color-olive;
+    border-width: 1px solid $color-dark-gray;
+    color: $color-dark-gray;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color-black;
+      color: $color-white;
+    }
   }
 }
