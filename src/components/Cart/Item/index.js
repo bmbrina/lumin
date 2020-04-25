@@ -60,7 +60,6 @@ Item.defaultProps = {
     id: 1,
     title: 'Age Management Collection',
     image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-    price: 48.00,
-    product_options: []
+    price: 48.00
   }
 };
