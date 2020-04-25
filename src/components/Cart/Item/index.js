@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Counter from '../../Shared/Counter';
 import './style.scss';
 
 export default class Item extends Component {
@@ -6,10 +7,20 @@ export default class Item extends Component {
     super(props);
 
     this.removeItem = this.removeItem.bind(this);
+    this.increaseQty = this.increaseQty.bind(this);
+    this.decreaseQty = this.decreaseQty.bind(this);
   }
 
   removeItem() {
     console.log('remove item');
+  }
+
+  increaseQty() {
+    console.log('increase');
+  }
+
+  decreaseQty() {
+    console.log('decrease');
   }
 
 	render() {
@@ -28,7 +39,11 @@ export default class Item extends Component {
        <button className="cart-item__close" onClick={this.removeItem}>x</button>
        <div className="cart-item__desc">
         <h3 className="cart-item__title">{title}</h3>
-        <div>
+        <div className="cart-item__qty">
+          <Counter 
+            increaseEvent={this.increaseQty}
+            decreaseEvent={this.decreaseQty}
+          />
           <p className="cart-item__price">${fixedPrice}</p>
         </div>
        </div>

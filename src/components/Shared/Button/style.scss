@@ -1,5 +1,9 @@
 @import '../../../styles/_partials/colors';
 
+button {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif; // @font-family-sans-serif
+}
+
 .btn {
   cursor: pointer;
   font-size: 14px;
@@ -26,8 +30,9 @@
 
   &-secondary {
     background-color: $color-white;
-    border-width: 1px solid $color-dark-gray;
+    border: 1px solid $color-dark-gray;
     color: $color-dark-gray;
+    letter-spacing: 1px;
 
     &:active,
     &:focus,
