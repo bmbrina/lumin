@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AppContext } from "../../../context/AppContext"
 import Button from '../../Shared/Button'
 import { fixedNumber } from '../../../helpers/utilities'
 import './style.scss'
@@ -10,8 +11,13 @@ export default class Item extends Component {
     this.addToCart = this.addToCart.bind(this)
   }
 
+  static contextType = AppContext
+
   addToCart() {
-    console.log('add to cart')
+    const { addProduct } = this.context
+    const { data } = this.props
+
+    addProduct(data)
   }
 
 	render() {

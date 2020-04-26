@@ -5,12 +5,12 @@ export default function Counter({
   classList, // e.g. 'my-custom-class'
   decreaseEvent,
   increaseEvent,
-  quantity
+  count
 }) {
 	return (
 		<div className={`counter ${classList}`}>
       <span className="counter__action" onClick={decreaseEvent}>-</span>
-      <span className="counter__text">{quantity}</span>
+      <span className="counter__text">{count}</span>
       <span className="counter__action" onClick={increaseEvent}>+</span>
 		</div>
 	)

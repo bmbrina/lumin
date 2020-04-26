@@ -6,8 +6,9 @@ export default class Header extends Component {
   static contextType = AppContext
 
 	render() {
-    const { setCartState } = this.context
-    const { counter } = this.props
+    const { cart, setCartState } = this.context
+    const  { products } = cart
+    const counter = Object.keys(products).length
 
 		return (
       <header className="header">
@@ -21,8 +22,4 @@ export default class Header extends Component {
       </header>
     )
 	}
-}
-
-Header.defaultProps = {
-	counter: 0
 }

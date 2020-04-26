@@ -77,6 +77,11 @@
   &__products {
     margin-bottom: 170px;
     overflow-y: scroll;
+
+    &--none {
+      margin-top: 20px;
+      text-align: center;
+    }
   }
 
   &__footer {

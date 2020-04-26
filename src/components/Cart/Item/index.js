@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AppContext } from "../../../context/AppContext"
 import Counter from '../../Shared/Counter'
 import { fixedNumber } from '../../../helpers/utilities'
 import './style.scss'
@@ -12,16 +13,27 @@ export default class Item extends Component {
     this.decreaseQty = this.decreaseQty.bind(this)
   }
 
+  static contextType = AppContext
+
   removeItem() {
-    console.log('remove item')
+    const { removeProduct } = this.context
+    const { id } = this.props
+
+    removeProduct(id);
   }
 
   increaseQty() {
-    console.log('increase')
+    const { updateProductQty } = this.context
+    const { id } = this.props
+
+    updateProductQty('increase', id)
   }
 
   decreaseQty() {
-    console.log('decrease')
+    const { updateProductQty } = this.context
+    const { id } = this.props
+
+    updateProductQty('decrease', id)
   }
 
 	render() {
@@ -31,7 +43,10 @@ export default class Item extends Component {
       title,
       image_url,
       price,
+      quantity
     } = data
+
+    const totalPrice = quantity * price
 
 		return (
      <div className="cart-item" key={id}>
@@ -42,8 +57,9 @@ export default class Item extends Component {
           <Counter 
             increaseEvent={this.increaseQty}
             decreaseEvent={this.decreaseQty}
+            count={quantity}
           />
-          <p className="cart-item__price">${fixedNumber(price)}</p>
+          <p className="cart-item__price">${fixedNumber(totalPrice)}</p>
         </div>
        </div>
         <div  className="cart-item__img">
@@ -52,13 +68,4 @@ export default class Item extends Component {
      </div>
     )
 	}
-}
-
-Item.defaultProps = {
-  product: {
-    id: 1,
-    title: 'Age Management Collection',
-    image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-    price: 48.00
-  }
 }

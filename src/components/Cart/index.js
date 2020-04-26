@@ -16,13 +16,21 @@ export default class Cart extends Component {
   static contextType = AppContext
 
   renderProducts() {
-    const { products } = this.props
+    const { products } = this.context.cart
+    const productsKeys = Object.keys(products)
 
-    return products.map(item => {
+    if (productsKeys.length === 0) {
+      return <p className="cart__products--none">There are no items in your cart</p>
+    }
+
+    return productsKeys.map(id => {
+      const item = products[id]
+
       return (
         <Item 
           data={item}
-          key={item.id}
+          id={id}
+          key={id}
         />
       )
     })
@@ -80,45 +88,4 @@ export default class Cart extends Component {
       </section>
     )
 	}
-}
-
-Cart.defaultProps = {
-  products: [
-    {
-      id: 1,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 2,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00,
-    },
-    {
-      id: 3,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 4,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 5,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 6,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    }
-  ]
 }
