@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import Button from '../../Shared/Button';
-import { fixedNumber } from '../../../helpers/utilities';
-import './style.scss';
+import React, { Component } from 'react'
+import Button from '../../Shared/Button'
+import { fixedNumber } from '../../../helpers/utilities'
+import './style.scss'
 
 export default class Item extends Component {
 	constructor(props) {
-    super(props);
+    super(props)
 
-    this.addToCart = this.addToCart.bind(this);
+    this.addToCart = this.addToCart.bind(this)
   }
 
   addToCart() {
-    console.log('add to cart');
+    console.log('add to cart')
   }
 
 	render() {
-    const { data } = this.props;
+    const { data } = this.props
     const {
       id,
       title,
       image_url,
       price,
-    } = data;
+    } = data
 
 		return (
      <div className="item" key={id}>
@@ -36,7 +36,7 @@ export default class Item extends Component {
         clickEvent={this.addToCart}
       />
      </div>
-    );
+    )
 	}
 }
 
@@ -47,4 +47,4 @@ Item.defaultProps = {
     image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
     price: 48.00
   }
-};
+}

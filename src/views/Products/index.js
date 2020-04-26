@@ -1,26 +1,17 @@
-import React from 'react';
-import gql from 'graphql-tag'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import List from './List';
-import './style.scss';
-
-
-const PRODUCTS = gql`
-  query Products {
-    products {
-      id,
-      title,
-      image_url,
-      price(currency: USD)
-    }
-  }
-`
+import List from '../../components/Products/List'
+import Loader from '../../components/Shared/Loader'
+import { PRODUCTS } from '../../helpers/API/queries'
+import './style.scss'
 
 export default function Products() {  
-  const { data, loading, error } = useQuery(PRODUCTS);
+  const { data, loading, error } = useQuery(PRODUCTS, {
+    variables: { currency: 'USD' }
+  })
 
   if (loading) {
-    return <p>Loading...</p>
+    return <Loader show={loading} />
   }
 
   if (error) {
@@ -35,5 +26,5 @@ export default function Products() {
         />
       </div>
     </section>
-  );
+  )
 }

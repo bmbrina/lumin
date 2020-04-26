@@ -1,5 +1,5 @@
-import React from 'react';
-import './style.scss';
+import React from 'react'
+import './style.scss'
 
 export default function Select({
   classList, // e.g. 'select--no-border'
@@ -28,12 +28,12 @@ export default function Select({
           >
             {option}
           </option>
-        );
+        )
       })}
 		</select>
-	);
+	)
 }
 
 Select.defaultProps = {
   options: ['a', 'b', 'c']
-};
+}

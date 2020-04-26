@@ -1,9 +1,9 @@
-import React from 'react';
-import Header from './Header';
-import Hero from './Hero';
-import Products from './Products';
-import Cart from './Cart';
-import '../styles/index.scss';
+import React from 'react'
+import Header from './Header'
+import Products from '../views/Products'
+import Hero from './Hero'
+import Cart from './Cart'
+import '../styles/index.scss'
 
 const App = () => (
   <>
@@ -14,4 +14,4 @@ const App = () => (
   </>
 )
 
-export default App;
+export default App

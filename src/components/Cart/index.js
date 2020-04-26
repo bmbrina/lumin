@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { AppContext } from "../../context/AppContext";
-import Item from './Item';
-import Button from '../Shared/Button';
-import Select from '../Shared/Select';
-import { fixedNumber } from '../../helpers/utilities';
-import './style.scss';
+import React, { Component } from 'react'
+import { AppContext } from "../../context/AppContext"
+import Item from './Item'
+import Button from '../Shared/Button'
+import Select from '../Shared/Select'
+import { fixedNumber } from '../../helpers/utilities'
+import './style.scss'
 
 export default class Cart extends Component {
-  static contextType = AppContext;
+  static contextType = AppContext
 
   renderProducts() {
-    const { products } = this.props;
+    const { products } = this.props
 
     return products.map(item => {
       return (
@@ -18,15 +18,15 @@ export default class Cart extends Component {
           data={item}
           key={item.id}
         />
-      );
-    });
+      )
+    })
   }
   
 	render() {
-    const { currencyOptions } = this.props;
-    const { cart, setCartState } = this.context;
-    const { showCart, subtotal } = cart;
-    const products =  this.renderProducts();
+    const { currencyOptions } = this.props
+    const { cart, setCartState } = this.context
+    const { showCart, subtotal } = cart
+    const products =  this.renderProducts()
 
 		return (
       <section className={`cart ${showCart ? 'cart--open' : ''}`} >
@@ -36,7 +36,7 @@ export default class Cart extends Component {
             <div className="row">
               <div className="col-4">
                 <button className="cart__close" onClick={setCartState}>
-                  <img src="https://cdn.shopify.com/s/files/1/0044/1237/5107/files/down.png?v=1583510959" alt="" />
+                  <img src="//cdn.shopify.com/s/files/1/0044/1237/5107/files/down.png?v=1583510959" alt="" />
                 </button>
               </div>
               <div className="col-4">
@@ -68,7 +68,7 @@ export default class Cart extends Component {
           </div>
         </div>
       </section>
-    );
+    )
 	}
 }
 
@@ -112,4 +112,4 @@ Cart.defaultProps = {
     }
   ],
   currencyOptions: ['USD', 'CAD', 'MXN']
-};
+}

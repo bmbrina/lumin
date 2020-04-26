@@ -1,37 +1,37 @@
-import React, { Component } from 'react';
-import Counter from '../../Shared/Counter';
-import { fixedNumber } from '../../../helpers/utilities';
-import './style.scss';
+import React, { Component } from 'react'
+import Counter from '../../Shared/Counter'
+import { fixedNumber } from '../../../helpers/utilities'
+import './style.scss'
 
 export default class Item extends Component {
 	constructor(props) {
-    super(props);
+    super(props)
 
-    this.removeItem = this.removeItem.bind(this);
-    this.increaseQty = this.increaseQty.bind(this);
-    this.decreaseQty = this.decreaseQty.bind(this);
+    this.removeItem = this.removeItem.bind(this)
+    this.increaseQty = this.increaseQty.bind(this)
+    this.decreaseQty = this.decreaseQty.bind(this)
   }
 
   removeItem() {
-    console.log('remove item');
+    console.log('remove item')
   }
 
   increaseQty() {
-    console.log('increase');
+    console.log('increase')
   }
 
   decreaseQty() {
-    console.log('decrease');
+    console.log('decrease')
   }
 
 	render() {
-    const { data } = this.props;
+    const { data } = this.props
     const {
       id,
       title,
       image_url,
       price,
-    } = data;
+    } = data
 
 		return (
      <div className="cart-item" key={id}>
@@ -50,7 +50,7 @@ export default class Item extends Component {
           <img src={image_url} alt={title}/>
         </div>
      </div>
-    );
+    )
 	}
 }
 
@@ -61,4 +61,4 @@ Item.defaultProps = {
     image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
     price: 48.00
   }
-};
+}

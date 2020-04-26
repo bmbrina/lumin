@@ -1,5 +1,5 @@
-import React from 'react';
-import './style.scss';
+import React from 'react'
+import './style.scss'
 
 export default function Button({
 	classList, // e.g. 'btn-primary my-custom-class'
@@ -13,10 +13,10 @@ export default function Button({
 		>
 		{text}
 		</button>
-	);
+	)
 }
 
 Button.defaultProps = {
 	classList: "btn-primary",
 	text: "Click Me",
-};
+}
