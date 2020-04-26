@@ -1,67 +1,39 @@
 import React, { Component } from 'react';
-import Item from '../Item';
+import gql from 'graphql-tag'
+import { useQuery } from '@apollo/react-hooks'
+import List from './List';
 import './style.scss';
 
-export default class Products extends Component {
-	constructor(props) {
-    super(props);
 
-    this.state = {
-      products: []
+const PRODUCTS = gql`
+  query Products {
+    products {
+      id,
+      title,
+      image_url,
+      price(currency: USD)
     }
   }
-  
-  renderProducts() {
-    const { products } = this.props;
+`
 
-    return products.map(item => {
-      return (
-        <Item 
-          data={item}
-          key={item.id}
+export default function Products() {  
+  const { data, loading, error } = useQuery(PRODUCTS);
+
+  if (loading) {
+    return <p>Loading...</p>
+  }
+
+  if (error) {
+    return <p>Error</p>
+  }
+
+  return (
+    <section className="products">
+      <div className="products__container container">
+        <List
+          products={data.products}
         />
-      );
-    });
-  }
-
-	render() {
-    const products =  this.renderProducts();
-
-		return (
-     <section className="products">
-       <div className="products__container container">
-        {products}
-       </div>
-     </section>
-    );
-	}
+      </div>
+    </section>
+  );
 }
-
-Products.defaultProps = {
-  products: [
-    {
-      id: 1,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 2,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 3,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    },
-    {
-      id: 4,
-      title: 'Age Management Collection',
-      image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
-      price: 48.00
-    }
-  ]
-};

@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
 import App from './components/App';
 import { AppContextProvider } from "./context/AppContext";
+import client from './client';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppContextProvider>
-      <App />
-    </AppContextProvider>
+    <ApolloProvider client={client}>
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
