@@ -37,7 +37,9 @@ class AppContextProvider extends Component {
   }
 
   addProduct(product) {
+    const { products } = this.state
     const { id } = product
+    const quantity = products[id] ? ++products[id].quantity : 1
 
     this.setState((prevState) => {
       return {
@@ -45,7 +47,7 @@ class AppContextProvider extends Component {
           ...prevState.products,
           [id]: {
             ...product,
-            quantity: 1
+            quantity
           }
         }
       }
