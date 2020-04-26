@@ -2,15 +2,20 @@ import React from 'react'
 import './style.scss'
 
 export default function Loader({
-	show // true/false
+	classList, // e.g. error
+	show, // true/false
+	text // e.g. Loading products
 }) {
 	return (
-		<div className={`loader ${show ? 'loader--show' : ''}`}>
-
+		<div className={`loader ${classList} ${show ? 'loader--show' : ''}`}>
+			<div className="loader__spinner"></div>
+			<p className="loader__text">{text}</p>
     </div>
 	)
 }
 
 Loader.defaultProps = {
-	show: false
+	classList: '',
+	show: false,
+	text: ''
 }

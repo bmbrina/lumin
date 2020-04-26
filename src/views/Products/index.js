@@ -11,11 +11,11 @@ export default function Products() {
   })
 
   if (loading) {
-    return <Loader show={loading} />
+    return <Loader show={loading} text="Loading products..." />
   }
 
   if (error) {
-    return <p>Error</p>
+    return <Loader text="Oops, something went wrong!" classList="error" />
   }
 
   return (
