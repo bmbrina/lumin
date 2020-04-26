@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Button from '../Shared/Button';
-import { fixedNumber } from '../../helpers/utilities';
+import Button from '../../Shared/Button';
+import { fixedNumber } from '../../../helpers/utilities';
 import './style.scss';
 
 export default class Item extends Component {

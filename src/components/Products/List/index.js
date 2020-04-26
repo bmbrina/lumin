@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import Item from '../../Item';
-import { fixedNumber } from '../../../helpers/utilities';
+import React from 'react';
+import Item from '../Item';
 
 export default function List({products}) {  
   return (
