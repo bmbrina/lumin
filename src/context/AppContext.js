@@ -13,6 +13,7 @@ class AppContextProvider extends Component {
     }
 
     this.setCartState = this.setCartState.bind(this)
+    this.setCurrency = this.setCurrency.bind(this)
   }
 
   setCartState() {
@@ -23,12 +24,21 @@ class AppContextProvider extends Component {
     })
   }
 
+  setCurrency(currency) {
+    this.setState(() => {
+      return {
+        currency
+      }
+    })
+  }
+
   render() {
     return (
       <AppContext.Provider
         value={{ 
           cart: this.state,
-          setCartState: this.setCartState
+          setCartState: this.setCartState,
+          setCurrency: this.setCurrency
          }}
       >
         {this.props.children}

@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { AppContext } from "../../context/AppContext"
 import Item from './Item'
 import Button from '../Shared/Button'
-import Select from '../Shared/Select'
+import Currency from './Currency'
 import { fixedNumber } from '../../helpers/utilities'
 import './style.scss'
 
 export default class Cart extends Component {
+  constructor(props) {
+    super(props)
+
+    this.updateCurrency = this.updateCurrency.bind(this)
+  }
+
   static contextType = AppContext
 
   renderProducts() {
@@ -21,9 +27,14 @@ export default class Cart extends Component {
       )
     })
   }
+
+  updateCurrency(e) {
+    const { setCurrency } = this.context
+    const selectedCurrency = e.target.value
+    setCurrency(selectedCurrency)
+  }
   
 	render() {
-    const { currencyOptions } = this.props
     const { cart, setCartState } = this.context
     const { showCart, subtotal } = cart
     const products =  this.renderProducts()
@@ -44,9 +55,8 @@ export default class Cart extends Component {
               </div>
               <div className="col-4"></div>
             </div>
-            <Select 
-              classList="select--no-border"
-              options={currencyOptions}
+            <Currency 
+              updateCurrency={this.updateCurrency}
             />
           </div>
           <div className="cart__products">
@@ -110,6 +120,5 @@ Cart.defaultProps = {
       image_url: 'https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/age-management.png',
       price: 48.00
     }
-  ],
-  currencyOptions: ['USD', 'CAD', 'MXN']
+  ]
 }
