@@ -7,7 +7,9 @@ class AppContextProvider extends Component {
 
     this.state = {
       showCart: false,
-      subtotal: 0.00
+      subtotal: 0.00,
+      products: [],
+      currency: 'USD'
     };
 
     this.setCartState = this.setCartState.bind(this);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppContext } from "../../AppContext";
+import { AppContext } from "../../context/AppContext";
 import './style.scss';
 
 export default class Header extends Component {  
