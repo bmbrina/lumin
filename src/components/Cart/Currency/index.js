@@ -9,7 +9,7 @@ export default function CurrencyDropdown({ updateCurrency }) {
     variables: { currency: 'USD' }
   })
   const currency = loading || error ? defaultCurrency : data.currency;
-  console.log(currency)
+
   return (
     <>
       <Select 
