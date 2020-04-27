@@ -1,0 +1,11 @@
+@mixin tablet-breakpoint {
+	@media (max-width: 1023px) {
+		@content
+	}
+}
+
+@mixin mobile-breakpoint {
+	@media (max-width: 767px) {
+		@content
+	}
+}

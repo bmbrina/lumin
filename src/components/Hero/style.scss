@@ -1,0 +1,34 @@
+@import '../../styles/_partials/mixins';
+@import '../../styles/_partials/colors';
+
+.hero {
+  background-color: $color-ivory;
+  padding: 70px 25px 25px;
+
+  &__header {
+    font-size: 48px;
+    letter-spacing: 0;
+    margin-bottom: 26px;
+  }
+
+  &__subheader {
+    letter-spacing: .03px;
+    margin-bottom: 36px;
+  }
+
+  @include mobile-breakpoint {
+    .container {
+      padding: 0;
+    }
+
+    &__header {
+      font-size: 32px;
+      letter-spacing: .19px;
+      margin-bottom: 10px;
+    }
+
+    &__subheader {
+      margin-bottom: 20px;
+    }
+  }
+}

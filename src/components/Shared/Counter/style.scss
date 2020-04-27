@@ -1,0 +1,16 @@
+.counter {
+  align-items: center;
+  border: .5px solid #BCBCBC;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+
+  &__action {
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  &__text {
+    padding: 0 10px;
+  }
+}

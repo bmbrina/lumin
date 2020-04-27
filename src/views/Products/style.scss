@@ -1,0 +1,9 @@
+.products {
+  background-color: #E2E6E3;
+  padding: 25px;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

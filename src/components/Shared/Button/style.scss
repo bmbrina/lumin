@@ -1,0 +1,44 @@
+@import '../../../styles/_partials/colors';
+
+button {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif; // @font-family-sans-serif
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 14px;
+  outline: 0;
+  padding: 15px 10px;
+  text-align: center;
+
+  &--alt {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &-primary {
+    background-color: $color-olive;
+    color: $color-ivory;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color-dark-gray;
+    }
+  }
+
+  &-secondary {
+    background-color: $color-white;
+    border: 1px solid $color-dark-gray;
+    color: $color-dark-gray;
+    letter-spacing: 1px;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../styles/_partials/mixins';
+@import '../../styles/_partials/colors';
+
+.header {
+  background-color: $color-ivory;
+  box-shadow: 0 2px 3px -3px $color-gray;
+  padding: 15px 5px;
+  position: relative;
+
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 163px;
+  }
+
+  &__cart {
+    cursor: pointer;
+    outline: 0;
+    position: relative;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: #3D5B57
+    }
+
+    &-icon {
+      width: 25px;
+    }
+
+    &-counter {
+      font-size: 14px;
+      position: absolute;
+      top: -7px;
+      right: -11px;
+    }
+  }
+
+  @include mobile-breakpoint {
+    &__logo {
+      height: 20px;
+    }
+  }
+}

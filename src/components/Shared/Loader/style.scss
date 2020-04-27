@@ -1,0 +1,50 @@
+@import '../../../styles/_partials/colors';
+
+@keyframes spinnerAnim {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.loader {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  &--show {
+    .loader__spinner {
+      display: block;
+    }
+  }
+
+  &__spinner {
+    display: none;
+    height: 70px;
+    margin: 0 auto;
+		width: 70px;
+
+		&::after {
+			animation: spinnerAnim 1.5s linear infinite;
+			border: 10px solid $color-olive;
+			border-radius: 50%;
+			border-right-color: $color-olive2;
+			border-top-color: $color-olive2;
+			content: '';
+			display: block;
+			height: 70px;
+
+			width: 70px;
+		}
+  }
+
+  &__text {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  &.error {
+    .loader__text {
+      color: $color-red;
+    }
+  }
+}
