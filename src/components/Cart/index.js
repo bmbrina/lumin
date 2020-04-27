@@ -19,10 +19,6 @@ export default class Cart extends Component {
     const { products } = this.context.cart
     const productsKeys = Object.keys(products)
 
-    if (productsKeys.length === 0) {
-      return <p className="cart__products--none">There are no items in your cart</p>
-    }
-
     return productsKeys.map(id => {
       const item = products[id]
 
@@ -44,8 +40,14 @@ export default class Cart extends Component {
   
 	render() {
     const { cart, setCartState } = this.context
-    const { showCart, subtotal } = cart
-    const products =  this.renderProducts()
+    const { currencyError, showCart, subtotal } = cart
+    let products = this.renderProducts()
+    let disableDropdown = false
+
+    if (!products.length) {
+      products = <p className="cart__products--none">There are no items in your cart</p>
+      disableDropdown = true
+    }
 
 		return (
       <section className={`cart ${showCart ? 'cart--open' : ''}`} >
@@ -65,6 +67,8 @@ export default class Cart extends Component {
             </div>
             <Currency 
               updateCurrency={this.updateCurrency}
+              errorState={currencyError}
+              disableDropdown={disableDropdown}
             />
           </div>
           <div className="cart__products">

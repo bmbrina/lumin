@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker'
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <AppContextProvider>
+      <AppContextProvider client={client}>
         <App />
       </AppContextProvider>
     </ApolloProvider>

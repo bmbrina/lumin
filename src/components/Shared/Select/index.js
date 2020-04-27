@@ -5,12 +5,14 @@ export default function Select({
   classList, // e.g. 'select--no-border'
 	text, // e.g. 'Select an option'
   changeEvent,
-  options
+  options,
+  disabled
 }) {
 	return (
 		<select
-			className={`select ${classList}`}
-			onChange={changeEvent}
+      className={`select ${classList}`}
+      onChange={changeEvent}
+      disabled={disabled}
 		>
       {text &&
         <option
@@ -35,5 +37,6 @@ export default function Select({
 }
 
 Select.defaultProps = {
-  options: ['a', 'b', 'c']
+  options: ['a', 'b', 'c'],
+  disabled: ''
 }

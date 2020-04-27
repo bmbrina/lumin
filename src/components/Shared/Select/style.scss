@@ -3,6 +3,7 @@
 .select {
   appearance: none;
   background: $color-white url('//cdn.shopify.com/s/files/1/2960/5204/t/4/assets/select.png?5997012569058552034') no-repeat right center;
+  border: 1px solid $color-white;
   border-radius: 0;
   cursor: pointer;
   padding: 10px 2em 10px 8px;
@@ -14,7 +15,12 @@
     outline: 0;
   }
 
-  &--no-border {
-    border: 0;
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &--error {
+    border: 1px solid $color-red;
+    color: $color-red;
   }
 }

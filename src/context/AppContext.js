@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { PRODUCTS_PRICES } from "../helpers/API/queries"
 const AppContext = React.createContext()
 
 class AppContextProvider extends Component {
@@ -9,7 +10,8 @@ class AppContextProvider extends Component {
       showCart: false,
       subtotal: 0.00,
       products: {},
-      currency: 'USD'
+      currency: 'USD',
+      currencyError: false
     }
 
     this.setCartState = this.setCartState.bind(this)
@@ -17,7 +19,6 @@ class AppContextProvider extends Component {
     this.addProduct = this.addProduct.bind(this)
     this.removeProduct = this.removeProduct.bind(this)
     this.updateProductQty = this.updateProductQty.bind(this)
-    this.calculateSubtotal = this.calculateSubtotal.bind(this)
   }
 
   setCartState() {
@@ -29,11 +30,30 @@ class AppContextProvider extends Component {
   }
 
   setCurrency(currency) {
-    this.setState(() => {
-      return {
-        currency
-      }
-    })
+    const {client } = this.props
+      client.query({
+        query: PRODUCTS_PRICES,
+        variables: { currency },
+        errorPolicy: 'all'
+      }).then( response => {
+        if (response.errors) {
+          this.setState(() => {
+            return {
+              currencyError: true
+            }
+          })
+        } else {
+          this.setState(() => {
+            return {
+              currency,
+              currencyError: false
+            }
+          }, () => {
+            const { prices } = response.data
+            this.updateProductPrices(prices)
+          })
+        }
+      })
   }
 
   addProduct(product) {
@@ -57,10 +77,7 @@ class AppContextProvider extends Component {
     })
   }
 
-  removeProduct(id) {
-    const { products } = this.state
-    delete products[id]
-
+  setProductsState(products) {
     this.setState(() => {
       return {
         products
@@ -68,6 +85,24 @@ class AppContextProvider extends Component {
     }, () => {
       this.calculateSubtotal()
     })
+  }
+
+  removeProduct(id) {
+    const { products } = this.state
+    delete products[id]
+    this.setProductsState(products)
+  }
+
+  updateProductPrices(prices) {
+    const { products } = this.state
+    prices.forEach(item => {
+      const { id, price} = item
+
+      if (products[id]) {
+        products[id].price = price
+      }
+    })
+    this.setProductsState(products)
   }
 
   updateProductQty(operation, id) {
@@ -124,8 +159,7 @@ class AppContextProvider extends Component {
           setCurrency: this.setCurrency,
           addProduct: this.addProduct,
           removeProduct: this.removeProduct,
-          updateProductQty: this.updateProductQty,
-          calculateSubtotal: this.calculateSubtotal
+          updateProductQty: this.updateProductQty
          }}
       >
         {this.props.children}

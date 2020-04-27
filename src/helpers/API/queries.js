@@ -17,7 +17,17 @@ const PRODUCTS = gql`
   }
 `
 
+const PRODUCTS_PRICES = gql`
+query ProductsPrices($currency: Currency) {
+  prices: products {
+    id,
+    price(currency: $currency)
+  }
+}
+`
+
 export {
   CURRENCY,
-  PRODUCTS
+  PRODUCTS,
+  PRODUCTS_PRICES
 }
