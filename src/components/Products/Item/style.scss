@@ -20,8 +20,12 @@
   }
 
   &__title {
+    align-items: center;
+    display: flex;
+    justify-content: center;
     line-height: 25px;
-    margin-bottom: 5px;
+    margin: 10px 0 5px;
+    min-height: 50px;
   }
 
   &__price {
