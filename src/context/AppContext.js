@@ -19,6 +19,7 @@ class AppContextProvider extends Component {
     this.addProduct = this.addProduct.bind(this)
     this.removeProduct = this.removeProduct.bind(this)
     this.updateProductQty = this.updateProductQty.bind(this)
+    this.updateProductPrice = this.updateProductPrice.bind(this)
   }
 
   setCartState() {
@@ -30,7 +31,7 @@ class AppContextProvider extends Component {
   }
 
   setCurrency(currency) {
-    const {client } = this.props
+    const { client } = this.props
       client.query({
         query: PRODUCTS_PRICES,
         variables: { currency },
@@ -49,8 +50,7 @@ class AppContextProvider extends Component {
               currencyError: false
             }
           }, () => {
-            const { prices } = response.data
-            this.updateProductPrices(prices)
+            this.updateProductPrices()
           })
         }
       })
@@ -59,14 +59,15 @@ class AppContextProvider extends Component {
   addProduct(product) {
     const { products } = this.state
     const { id } = product
+    const item = this.updateProductPrice(product)
     const quantity = products[id] ? ++products[id].quantity : 1
-
+     
     this.setState((prevState) => {
       return {
         products: {
           ...prevState.products,
           [id]: {
-            ...product,
+            ...item,
             quantity
           }
         }
@@ -75,6 +76,20 @@ class AppContextProvider extends Component {
       this.calculateSubtotal()
       this.setCartState()
     })
+  }
+
+  updateProductPrice(item) {
+    const { currency } = this.state
+    const { client } = this.props
+    const { data } = client.cache.data
+    const priceString = `price({"currency":"${currency}"})`
+    const { id, __typename } = item
+    const price = data[`${__typename}:${id}`][priceString]
+
+    return {
+      ...item,
+      price
+    }
   }
 
   setProductsState(products) {
@@ -93,13 +108,19 @@ class AppContextProvider extends Component {
     this.setProductsState(products)
   }
 
-  updateProductPrices(prices) {
-    const { products } = this.state
-    prices.forEach(item => {
-      const { id, price} = item
+  updateProductPrices() {
+    const { client } = this.props
+    const  { products, currency } = this.state
+    const { data } = client.cache.data
+  
+    Object.values(products).forEach(item => {
+      const priceString = `price({"currency":"${currency}"})`
+      const { id, __typename } = item
+      const price = data[`${__typename}:${id}`][priceString]
 
-      if (products[id]) {
-        products[id].price = price
+      products[id] = {
+        ...item,
+        price
       }
     })
     this.setProductsState(products)

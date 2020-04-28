@@ -6,7 +6,7 @@ export default function Select({
 	text, // e.g. 'Select an option'
   changeEvent,
   options,
-  disabled
+  disabled // 'disabled' \\ ''
 }) {
 	return (
 		<select
