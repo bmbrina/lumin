@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/lumin/static/css/main.71b3859c.chunk.css",
+    "main.css": "/lumin/static/css/main.d4a62501.chunk.css",
     "main.js": "/lumin/static/js/main.871f3634.chunk.js",
     "main.js.map": "/lumin/static/js/main.871f3634.chunk.js.map",
     "runtime-main.js": "/lumin/static/js/runtime-main.b7fdc29a.js",
@@ -8,15 +8,15 @@
     "static/js/2.41117030.chunk.js": "/lumin/static/js/2.41117030.chunk.js",
     "static/js/2.41117030.chunk.js.map": "/lumin/static/js/2.41117030.chunk.js.map",
     "index.html": "/lumin/index.html",
-    "precache-manifest.b1082b935323b0190d0d1bf267009d31.js": "/lumin/precache-manifest.b1082b935323b0190d0d1bf267009d31.js",
+    "precache-manifest.266c762d086a50eb85bca868acd654fb.js": "/lumin/precache-manifest.266c762d086a50eb85bca868acd654fb.js",
     "service-worker.js": "/lumin/service-worker.js",
-    "static/css/main.71b3859c.chunk.css.map": "/lumin/static/css/main.71b3859c.chunk.css.map",
+    "static/css/main.d4a62501.chunk.css.map": "/lumin/static/css/main.d4a62501.chunk.css.map",
     "static/js/2.41117030.chunk.js.LICENSE.txt": "/lumin/static/js/2.41117030.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b7fdc29a.js",
     "static/js/2.41117030.chunk.js",
-    "static/css/main.71b3859c.chunk.css",
+    "static/css/main.d4a62501.chunk.css",
     "static/js/main.871f3634.chunk.js"
   ]
 }
